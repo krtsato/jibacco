@@ -1,0 +1,17 @@
+.DS_Store
+.git
+.gitignore
+.markdownlint
+*.md
+compose/
+*/Dockerfile
+*/env/*.env
+
+# backend
+backend/vendor/
+backend/log/
+
+
+# frontend
+frontend/node_modules/
+frontend/log/

@@ -1,0 +1,23 @@
+.DS_Store
+*.env
+/.markdownlint.yml
+
+# backend
+/backend/cache*
+/backend/config/master.key
+/backend/log/*
+!/backend/log/.keep
+/backend/public/assets
+/backend/storage/*
+!/backend/storage/.keep
+/backend/tmp/*
+!/backend/tmp/.keep
+/backend/vendor/*
+!/backend/vendor/.keep
+/backend/.byebug_history
+
+# frontend
+/frontend/node_modules
+/frontend/.yarn-integrity
+/frontend/yarn-error.log
+/frontend/yarn-debug.log*
