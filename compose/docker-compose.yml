@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  main_db:
+    container_name: jbc_main_db_cont
+    image: jbc_main_db_img
+    ports:
+      - 3306:3306
+    volumes:
+      - main_db_vol:/var/lib/mysql
+
+volumes:
+  main_db_vol:

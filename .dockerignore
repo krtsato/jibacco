@@ -4,13 +4,12 @@
 .markdownlint
 *.md
 compose/
-*/docker/*/Dockerfile
-*/env/*.env
+*/docker/*/*.dockerfile
+*/env/
 
 # backend
 backend/vendor/
 backend/log/
-
 
 # frontend
 frontend/node_modules/
