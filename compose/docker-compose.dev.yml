@@ -6,3 +6,10 @@ services:
       context: ../
       dockerfile: backend/docker/main_db/dev.dockerfile
     env_file: ../backend/env/main_db/dev.env
+  
+  cache_db:
+    build:
+      context: ../
+      dockerfile: backend/docker/cache_db/dev.dockerfile
+    sysctls:
+      net.core.somaxconn: 1024

@@ -8,8 +8,8 @@ compose/
 */env/
 
 # backend
-backend/vendor/
 backend/log/
+backend/vendor/
 
 # frontend
 frontend/node_modules/

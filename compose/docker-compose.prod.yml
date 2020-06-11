@@ -6,3 +6,8 @@ services:
       context: ../
       dockerfile: backend/docker/main_db/prod.dockerfile
     env_file: ../backend/env/main_db/prod.dev
+
+  cache_db:
+    build:
+      context: ../
+      dockerfile: backend/docker/cache_db/prod.dockerfile

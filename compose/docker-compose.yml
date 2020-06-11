@@ -8,6 +8,18 @@ services:
       - 3306:3306
     volumes:
       - main_db_vol:/var/lib/mysql
+      - ../backend/log/main_db:/var/log
+
+  cache_db:
+    container_name: jbc_cache_db_cont
+    image: jbc_cache_db_img
+    ports:
+      - 6379:6379
+    volumes:
+      - cache_db_vol:/data
+      - ../backend/log/cache_db:/var/log
+
 
 volumes:
   main_db_vol:
+  cache_db_vol:
