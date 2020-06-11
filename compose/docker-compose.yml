@@ -11,6 +11,7 @@ services:
       - ../backend/log/main_db:/var/log
 
   cache_db:
+    command: redis-server /usr/local/etc/redis/redis.conf
     container_name: jbc_cache_db_cont
     image: jbc_cache_db_img
     ports:
@@ -19,7 +20,22 @@ services:
       - cache_db_vol:/data
       - ../backend/log/cache_db:/var/log
 
+  main_api:
+    container_name: jbc_main_api_cont
+    depends_on:
+      - main_db
+      - cache_db
+    image: jbc_main_api_img
+    ports:
+      - 3000:3000
+    tty: true
+    volumes:
+      - main_api_bundle_vol:/usr/local/bundle
+      - main_api_proxy_vol:/main_api/tmp/sockets
+      - .:/main_api
 
 volumes:
   main_db_vol:
   cache_db_vol:
+  main_api_bundle_vol:
+  main_api_proxy_vol:

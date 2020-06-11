@@ -13,3 +13,14 @@ services:
       dockerfile: backend/docker/cache_db/dev.dockerfile
     sysctls:
       net.core.somaxconn: 1024
+
+  main_api:
+    build:
+      context: ../
+      dockerfile: backend/docker/main_api/dev.dockerfile
+    # シェル化する : シェルの作成ディレクトリをどうするか
+    command: >
+      bundle check || bundle install -j4
+      rm -f ../backend/main_api/tmp/pids/server.pid
+      bundle exec puma -C ../backend/main_api/config/puma.rb -e development
+    env_file: ../backend/env/main_api/dev.env

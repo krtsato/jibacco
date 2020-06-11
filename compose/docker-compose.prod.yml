@@ -11,3 +11,14 @@ services:
     build:
       context: ../
       dockerfile: backend/docker/cache_db/prod.dockerfile
+
+  main_api:
+    build:
+      context: ../
+      dockerfile: backend/docker/main_api/prod.dockerfile
+    # シェル化する : シェルの作成ディレクトリをどうするか
+    command: >
+      bundle check || bundle install -j4
+      rm -f ../backend/main_api/tmp/pids/server.pid
+      bundle exec puma -C ../backend/main_api/config/puma.rb -e production
+    env_file: ../backend/env/main_api/prod.env
