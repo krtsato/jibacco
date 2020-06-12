@@ -19,5 +19,9 @@ services:
     command: ./cmd/start_server/prod.sh
     env_file: ../backend/env/main_api/prod.env
 
+  proxy:
+    build:
+      context: ../
+      dockerfile: proxy/docker/prod.dockerfile
 
 

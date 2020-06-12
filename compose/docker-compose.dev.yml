@@ -21,3 +21,8 @@ services:
       dockerfile: backend/docker/main_api/dev.dockerfile
     command: ./cmd/start_server/dev.sh
     env_file: ../backend/env/main_api/dev.env
+
+  proxy:
+    build:
+      context: ../
+      dockerfile: proxy/docker/dev.dockerfile

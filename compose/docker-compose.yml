@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   main_db:
@@ -31,13 +31,27 @@ services:
     tty: true
     volumes:
       - main_api_bundle_vol:/usr/local/bundle
-      - main_api_proxy_vol:/main_api/tmp/sockets
       - ../backend/main_api:/main_api
       - ../backend/log/main_api:/var/log
     working_dir: /main_api
+
+  proxy:
+    command: nginx -c nginx.conf -g 'daemon off;'
+    container_name: jbc_proxy_cont
+    depends_on:
+      - main_api
+      # - frontend
+    image: jbc_proxy_img
+    ports:
+      - 80:80
+    volumes:
+      - front_proxy_vol:/usr/share/nginx/html
+      - ../proxy/log:/var/log/nginx
+    working_dir: /proxy
+
 
 volumes:
   main_db_vol:
   cache_db_vol:
   main_api_bundle_vol:
-  main_api_proxy_vol:
+  front_proxy_vol:

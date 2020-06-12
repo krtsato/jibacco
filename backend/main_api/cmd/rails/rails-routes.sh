@@ -8,7 +8,7 @@ else
 fi
 
 # format and display routes
-docker-compose exec web bundle exec rails routes \
+compose/dev.sh exec main_api bundle exec rails routes \
 | eval ${grep} \
 | sed -e 's/(.:format)//g' \
 | awk -F'Verb|GET|POST|PUT|PATCH|DELETE' '{if(match($1, /^ *$/)){printf "\* %s\n", $0;} else print}' \
