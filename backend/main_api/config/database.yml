@@ -1,0 +1,22 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['MAIN_DB_USER'] %>
+  password: <%= ENV['MAIN_DB_PASSWORD'] %>
+  host: <%= ENV['MAIN_DB_HOST'] %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: <%= ENV['MAIN_DB_DEV_NAME'] %> 
+  port: <%= ENV['MAIN_DB_PORT'] %>
+
+test:
+  <<: *default
+  database: <%= ENV['MAIN_DB_TEST_NAME'] %>
+
+production:
+  <<: *default
+  database: <%= ENV['MAIN_DB_PROD_NAME'] %>
+  # デプロイ環境に合わせて変更する

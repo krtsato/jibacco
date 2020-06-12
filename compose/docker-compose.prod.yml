@@ -16,5 +16,8 @@ services:
     build:
       context: ../
       dockerfile: backend/docker/main_api/prod.dockerfile
-    command: ../backend/main_api/cmd/start_server/start_prod_server.sh
+    command: ./cmd/start_server/prod.sh
     env_file: ../backend/env/main_api/prod.env
+
+
+

@@ -1,7 +1,5 @@
 FROM ruby:2.7.1-alpine3.11
 
-WORKDIR /main_api
-
 COPY backend/docker/main_api/.gemrc ~/
 
 RUN set -ox pipefail \
@@ -12,4 +10,4 @@ RUN set -ox pipefail \
   && gem install bundler -N \
   && rm -rf /var/cache/apk/*
 
-COPY . .
+COPY ./backend/main_api .

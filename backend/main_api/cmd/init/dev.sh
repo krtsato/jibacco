@@ -2,11 +2,11 @@
 
 set -x
 
-compose/dev.sh run --rm web bash -c \
+compose/dev.sh run --rm main_api bash -c \
   "set -x \
-  && ./backend/main_api/cmd/setup/wait_for_db.sh \
+  && cmd/init/wait_for_db.sh \
   && bundle install -j4 \
-  && bundle exec rails new ./backend/main_api -d mysql \
+  && bundle exec rails new . -d mysql \
     -BCGMST --api --skip --skip-active-storage --skip-gemfile \
     --skip-system-test --skip-turbolinks --skip-webpack-install \
   && bundle exec rails db:create \

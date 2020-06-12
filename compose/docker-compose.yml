@@ -32,7 +32,9 @@ services:
     volumes:
       - main_api_bundle_vol:/usr/local/bundle
       - main_api_proxy_vol:/main_api/tmp/sockets
-      - .:/main_api
+      - ../backend/main_api:/main_api
+      - ../backend/log/main_api:/var/log
+    working_dir: /main_api
 
 volumes:
   main_db_vol:

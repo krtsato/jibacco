@@ -3,21 +3,14 @@
 /.markdownlint.yml
 
 # backend
-/backend/cache*
-/backend/config/master.key
+/backend/main_api/cache*
+/backend/main_api/config/master.key
 /backend/log/*
 !/backend/log/.keep
-/backend/public/assets
-/backend/storage/*
-!/backend/storage/.keep
-/backend/tmp/*
-!/backend/tmp/.keep
-/backend/vendor/*
-!/backend/vendor/.keep
-/backend/.byebug_history
+/backend/main_api/tmp/*
+!/backend/main_api/tmp/.keep
 
 # frontend
-/frontend/node_modules
 /frontend/.yarn-integrity
 /frontend/yarn-error.log
 /frontend/yarn-debug.log*

@@ -1,0 +1,68 @@
+inherit_from:
+  - .rubocop_todo.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.7
+  Exclude:
+    - bin/**/*
+    - config/**/*
+    - cmd/**/*
+    - db/**/*
+    - tmp/**/*
+    - config.ru
+    - Gemfile
+    - Rakefile
+
+Layout/LineLength:
+  Max: 120
+
+Layout/SpaceInLambdaLiteral:
+  EnforcedStyle: require_space
+
+Layout/SpaceInsideBlockBraces:
+  EnforcedStyle: no_space
+  SpaceBeforeBlockParameters: false
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/MethodLength:
+  Max: 15
+
+RSpec/ExampleLength:
+  Exclude:
+    - spec/features/**/*
+  Max: 10
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false

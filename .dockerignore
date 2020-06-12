@@ -9,8 +9,6 @@ compose/
 
 # backend
 backend/log/
-backend/vendor/
 
 # frontend
-frontend/node_modules/
 frontend/log/

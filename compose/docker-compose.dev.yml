@@ -11,6 +11,7 @@ services:
     build:
       context: ../
       dockerfile: backend/docker/cache_db/dev.dockerfile
+    env_file: ../backend/env/cache_db/dev.env
     sysctls:
       net.core.somaxconn: 1024
 
@@ -18,5 +19,5 @@ services:
     build:
       context: ../
       dockerfile: backend/docker/main_api/dev.dockerfile
-    command: ../backend/main_api/cmd/start_server/start_dev_server.sh
+    command: ./cmd/start_server/dev.sh
     env_file: ../backend/env/main_api/dev.env
