@@ -53,12 +53,11 @@ services:
     image: jbc_frontend_img
     ports:
       - 8000:8000 # webpack
-      - 8001:8001 # stroybook
+      - 6006:6006 # stroybook
     volumes:
       - frontend_node_mod_vol:/frontend/node_modules
       - frontend_proxy_vol:/frontend/public
       - ../frontend:/frontend
-    working_dir: /frontend
 
 volumes:
   main_db_vol:

@@ -28,6 +28,6 @@ services:
     build:
       context: ../
       dockerfile: frontend/docker/prod.dockerfile
-    # command: ./cmd/start_server/prod.sh
+    command: npm run build:prod
     env_file: ../frontend/env/prod.env
 

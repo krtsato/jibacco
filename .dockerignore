@@ -1,13 +1,5 @@
-.DS_Store
-.git
-.gitignore
-.markdownlint
-*.md
-/docker/*/*.dockerfile
-/env/*
-
-# backend
-backend/log/
-
-# frontend
-frontend/log/
+# common files
+*/docker/**/*.dockerfile
+*/env/**/*.env
+*/log/**/*.log
+*/**/*.md

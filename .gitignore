@@ -1,16 +1,19 @@
+# top level
 .DS_Store
-*.env
 /.markdownlint.yml
 
+# common files
+/*/env/**/*.env
+!/*/env/**/.keep
+/*/log/**/*.log
+!/*/log/**/.keep
+
 # backend
-/backend/main_api/cache*
+/backend/main_api/vender
+/backend/main_api/cache/*
 /backend/main_api/config/master.key
-/backend/log/*
-!/backend/log/.keep
 /backend/main_api/tmp/*
 !/backend/main_api/tmp/.keep
 
 # frontend
-/frontend/.yarn-integrity
-/frontend/yarn-error.log
-/frontend/yarn-debug.log*
+/frontend/node_modules

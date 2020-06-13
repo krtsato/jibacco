@@ -7,4 +7,6 @@ RUN set -ox pipefail \
   && apk add --no-cache bash vim \
   && rm -rf /var/cache/apk/*
 
+WORKDIR /frontend
+
 COPY frontend .
