@@ -44,7 +44,7 @@ module.exports = {
     })
 
     config.resolve.alias = {
-      "@comm": path.resolve(__dirname, "../src/commons"),
+      "@lib": path.resolve(__dirname, "../src/lib"),
       "@comp": path.resolve(__dirname, "../src/components"),
       "@cont": path.resolve(__dirname, "../src/containers"),
       "@redx": path.resolve(__dirname, "../src/reducks"),

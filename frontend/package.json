@@ -10,7 +10,7 @@
     "build:prod": "webpack --mode production",
     "lint": "eslint --color --fix --ext .tsx,.ts,.js src/**/*",
     "fmt": "prettier --config .prettierrc.yml --write 'src/**/*'",
-    "sb": "start-storybook -p 8001",
+    "sb": "start-storybook -p 6006",
     "sb:build": "build-storybook",
     "test": "jest --updateSnapshot",
     "ts": "tsc"

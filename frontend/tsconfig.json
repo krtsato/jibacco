@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    // JavaScript ファイルも対象
+    "allowJs": true, 
+    // エイリアスを設定
+    "baseUrl": "src",
+    "paths": {
+      "@lib/*": ["lib/*"],
+      "@comp/*": ["components/*"],
+      "@cont/*": ["containers/*"],
+      "@redx/*": ["reducks/*"],
+      "@serv/*": ["services/*"]
+    },
+    // CommonJS モジュールと ES モジュールの相互運用が可能
+    "esModuleInterop": true,
+    // import type で明記する型は値として使わない
+    "importsNotUsedAsValues": "error",
+    // re-export するため各ファイルを単一のモジュールとして評価しない
+    "isolatedModules": false,
+    // .tsx ファイルから JSX の形式を保ったまま .jsx ファイルを出力
+    "jsx": "preserve",
+    // 出力するモジュールは ECMAScript の 最新版に準拠
+    "module": "esnext",
+    // モジュール解決は Node.js 方式を採用
+    "moduleResolution": "node",
+    // TypeScript でなく Babel でコンパイル
+    "noEmit": true,
+    // Webpack devtool で使用
+    "sourceMap": true,
+    // 厳格な設定を有効化 strictNullChecks, noImplicitAny など
+    "strict": true,
+    // ECMAScript の 最新版を参照
+    "target": "esnext",
+    // 型定義ファイル @types/* および *.d.ts を指定
+    "typeRoots": ["node_modules/@types", "src/reducks/types.d.ts"]
+  },
+  "include": [
+    "src/**/*",
+    "jest.config.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "public"
+  ]
+}
