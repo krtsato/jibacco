@@ -9,7 +9,6 @@
 !/*/log/**/.keep
 
 # backend
-/backend/main_api/vender
 /backend/main_api/cache/*
 /backend/main_api/config/master.key
 /backend/main_api/tmp/*

@@ -2,7 +2,6 @@
 
 set -x
 
-compose/dev.sh run --rm --no-deps frontend bash -c \
+compose/dev.sh run --rm frontend bash -c \
   "set -x \
-  && cmd/init/npm_install.sh \
-  && npx ts-jest config:init"
+  && cmd/init/npm_install.sh"
