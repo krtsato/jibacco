@@ -32,7 +32,6 @@ services:
       - main_api_bundle_vol:/usr/local/bundle
       - ../backend/main_api:/main_api
       - ../backend/log/main_api:/var/log
-    working_dir: /main_api
 
   proxy:
     command: nginx -c nginx.conf -g 'daemon off;'
@@ -46,7 +45,6 @@ services:
     volumes:
       - frontend_proxy_vol:/usr/share/nginx/html
       - ../proxy/log:/var/log/nginx
-    working_dir: /proxy
 
   frontend:
     container_name: jbc_frontend_cont
