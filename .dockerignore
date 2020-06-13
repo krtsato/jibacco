@@ -3,9 +3,8 @@
 .gitignore
 .markdownlint
 *.md
-compose/
-*/docker/*/*.dockerfile
-*/env/
+/docker/*/*.dockerfile
+/env/*
 
 # backend
 backend/log/

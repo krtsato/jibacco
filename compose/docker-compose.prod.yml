@@ -24,4 +24,10 @@ services:
       context: ../
       dockerfile: proxy/docker/prod.dockerfile
 
+  frontend:
+    build:
+      context: ../
+      dockerfile: frontend/docker/prod.dockerfile
+    # command: ./cmd/start_server/prod.sh
+    env_file: ../frontend/env/prod.env
 

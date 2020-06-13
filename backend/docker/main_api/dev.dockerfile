@@ -10,4 +10,4 @@ RUN set -ox pipefail \
   && gem install bundler -N \
   && rm -rf /var/cache/apk/*
 
-COPY ./backend/main_api .
+COPY backend/main_api .

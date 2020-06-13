@@ -13,4 +13,4 @@ compose/dev.sh run --rm main_api bash -c \
   && bundle exec rails g rspec:install \
   && bundle exec rubocop --auto-gen-config"
 
-compose/dev.sh up -d
+rm -rf backend/main_api/vendor backend/main_api/log backend/main_api/lib

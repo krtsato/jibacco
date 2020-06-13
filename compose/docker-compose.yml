@@ -28,7 +28,6 @@ services:
     image: jbc_main_api_img
     ports:
       - 3000:3000
-    tty: true
     volumes:
       - main_api_bundle_vol:/usr/local/bundle
       - ../backend/main_api:/main_api
@@ -40,18 +39,30 @@ services:
     container_name: jbc_proxy_cont
     depends_on:
       - main_api
-      # - frontend
+      - frontend
     image: jbc_proxy_img
     ports:
       - 80:80
     volumes:
-      - front_proxy_vol:/usr/share/nginx/html
+      - frontend_proxy_vol:/usr/share/nginx/html
       - ../proxy/log:/var/log/nginx
     working_dir: /proxy
 
+  frontend:
+    container_name: jbc_frontend_cont
+    image: jbc_frontend_img
+    ports:
+      - 8000:8000 # webpack
+      - 8001:8001 # stroybook
+    volumes:
+      - frontend_node_mod_vol:/frontend/node_modules
+      - frontend_proxy_vol:/frontend/public
+      - ../frontend:/frontend
+    working_dir: /frontend
 
 volumes:
   main_db_vol:
   cache_db_vol:
   main_api_bundle_vol:
-  front_proxy_vol:
+  frontend_node_mod_vol:
+  frontend_proxy_vol:
