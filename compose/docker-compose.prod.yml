@@ -4,20 +4,20 @@ services:
   main_db:
     build:
       context: ../
-      dockerfile: backend/docker/main_db/prod.dockerfile
-    env_file: ../backend/env/main_db/prod.dev
+      dockerfile: backend/main_db/docker/prod.dockerfile
+    env_file: ../backend/main_db/env/prod.dev
 
   cache_db:
     build:
       context: ../
-      dockerfile: backend/docker/cache_db/prod.dockerfile
+      dockerfile: backend/cache_db/docker/prod.dockerfile
 
   main_api:
     build:
       context: ../
-      dockerfile: backend/docker/main_api/prod.dockerfile
+      dockerfile: backend/main_api/docker/prod.dockerfile
     command: ./cmd/start_server/prod.sh
-    env_file: ../backend/env/main_api/prod.env
+    env_file: ../backend/main_api/env/prod.env
 
   proxy:
     build:

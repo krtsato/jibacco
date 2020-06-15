@@ -1,7 +1,7 @@
 # common files
-*/docker/**/*.dockerfile
-*/env/**/*.env
-*/log/**/*.log
+*/**/docker/*.dockerfile
+*/**/env/*.env
+*/**/log/*.log
 */**/*.md
 
 # frontend

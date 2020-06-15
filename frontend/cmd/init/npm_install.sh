@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -ex
-
 # This script runs at the Dockerfile entry point
 
 # npm install notes

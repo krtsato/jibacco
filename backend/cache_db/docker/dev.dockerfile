@@ -3,7 +3,7 @@
 
 FROM redis:6.0.5-alpine3.12
 
-COPY backend/docker/cache_db/redis.conf /usr/local/etc/redis/redis.conf
+COPY backend/cache_db/docker/redis.conf /usr/local/etc/redis/redis.conf
 
 RUN set -ox pipefail \
   && apk update \

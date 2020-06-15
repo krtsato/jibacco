@@ -44,3 +44,16 @@
   - モバイル対応
     - まずは Android 優先
   - ダークモード
+
+<br>
+
+## 環境構築
+
+```zsh
+# setup directories, files, databases and volumes
+% ./backend/main_api/cmd/init/dev.sh
+% ./frontend/main_api/cmd/init/dev.sh
+
+# start services
+% compose/dev.sh up -d --build
+```

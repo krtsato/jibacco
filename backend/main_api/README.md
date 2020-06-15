@@ -1,24 +1,16 @@
-# README
+# Jibacco Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 環境構築
 
-Things you may want to cover:
+開発環境  
+使い回すファイルは事前に配置する
 
-* Ruby version
+```zsh
+% pwd # ~/jibacco
 
-* System dependencies
+# setup directories, files, databases and volume
+% ./backend/main_api/cmd/init/dev.sh
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# start puma server
+% compose/dev.sh up -d main_api
+```

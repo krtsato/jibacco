@@ -4,23 +4,23 @@ services:
   main_db:
     build:
       context: ../
-      dockerfile: backend/docker/main_db/dev.dockerfile
-    env_file: ../backend/env/main_db/dev.env
+      dockerfile: backend/main_db/docker/dev.dockerfile
+    env_file: ../backend/main_db/env/dev.env
   
   cache_db:
     build:
       context: ../
-      dockerfile: backend/docker/cache_db/dev.dockerfile
-    env_file: ../backend/env/cache_db/dev.env
+      dockerfile: backend/cache_db/docker/dev.dockerfile
+    env_file: ../backend/cache_db/env/dev.env
     sysctls:
       net.core.somaxconn: 1024
 
   main_api:
     build:
       context: ../
-      dockerfile: backend/docker/main_api/dev.dockerfile
+      dockerfile: backend/main_api/docker/dev.dockerfile
     command: ./cmd/start_server/dev.sh
-    env_file: ../backend/env/main_api/dev.env
+    env_file: ../backend/main_api/env/dev.env
 
   proxy:
     build:

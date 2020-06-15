@@ -8,7 +8,7 @@ services:
       - 3306:3306
     volumes:
       - main_db_vol:/var/lib/mysql
-      - ../backend/log/main_db:/var/log
+      - ../backend/main_db/log:/var/log
 
   cache_db:
     command: redis-server /usr/local/etc/redis/redis.conf
@@ -18,7 +18,7 @@ services:
       - 6379:6379
     volumes:
       - cache_db_vol:/data
-      - ../backend/log/cache_db:/var/log
+      - ../backend/cache_db/log:/var/log
 
   main_api:
     container_name: jbc_main_api_cont
@@ -31,7 +31,6 @@ services:
     volumes:
       - main_api_bundle_vol:/usr/local/bundle
       - ../backend/main_api:/main_api
-      - ../backend/log/main_api:/var/log
 
   proxy:
     command: nginx -c nginx.conf -g 'daemon off;'
@@ -53,8 +52,8 @@ services:
       - 8000:8000 # webpack
       - 6006:6006 # stroybook
     volumes:
-      - frontend_node_mod_vol:/frontend/node_modules
       - frontend_proxy_vol:/frontend/public
+      - frontend_node_mod_vol:/frontend/node_modules
       - ../frontend:/frontend
 
 volumes:

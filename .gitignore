@@ -3,12 +3,13 @@
 /.markdownlint.yml
 
 # common files
-/*/env/**/*.env
-!/*/env/**/.keep
-/*/log/**/*.log
-!/*/log/**/.keep
+/*/**/env/*.env
+!/*/**/env/.keep
+/*/**/log/*.log
+!/*/**/log/.keep
 
 # backend
+## main_api
 /backend/main_api/cache/*
 /backend/main_api/config/master.key
 /backend/main_api/tmp/*
