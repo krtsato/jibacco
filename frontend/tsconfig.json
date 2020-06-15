@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    // JavaScript ファイルを対象としない
+    // JavaScript ファイルを対象とする (snapshots.test.js のため)
     "allowJs": true, 
     // エイリアスを設定
     "baseUrl": "src",

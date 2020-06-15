@@ -33,4 +33,3 @@ services:
       dockerfile: frontend/docker/dev.dockerfile
     command: npm run build:dev
     env_file: ../frontend/env/dev.env
-    tty: true

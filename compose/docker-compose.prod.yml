@@ -28,7 +28,6 @@ services:
     build:
       context: ../
       dockerfile: frontend/docker/prod.dockerfile
-    command: bash # npm run build:prod
+    command: npm run build:prod
     env_file: ../frontend/env/prod.env
-    tty: true
 

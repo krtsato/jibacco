@@ -4,7 +4,7 @@ import {BrowserRouter} from "react-router-dom"
 import {Provider} from "react-redux"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import {ThemeProvider} from "@material-ui/core/styles"
-import {styleTheme} from "@comm/styleTheme"
+import {styleTheme} from "@lib/style/styleTheme"
 import {configureStore} from "@redx/store"
 import {App} from "@cont/app/app"
 

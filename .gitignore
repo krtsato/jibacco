@@ -1,6 +1,5 @@
 # top level
 .DS_Store
-/.markdownlint.yml
 
 # common files
 /*/**/env/*.env
