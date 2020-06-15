@@ -53,12 +53,10 @@ services:
       - 6006:6006 # stroybook
     volumes:
       - frontend_proxy_vol:/frontend/public
-      - frontend_node_mod_vol:/frontend/node_modules
       - ../frontend:/frontend
 
 volumes:
   main_db_vol:
   cache_db_vol:
   main_api_bundle_vol:
-  frontend_node_mod_vol:
   frontend_proxy_vol:

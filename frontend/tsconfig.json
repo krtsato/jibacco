@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    // JavaScript ファイルも対象
+    // JavaScript ファイルを対象としない
     "allowJs": true, 
     // エイリアスを設定
     "baseUrl": "src",
@@ -17,14 +17,12 @@
     "importsNotUsedAsValues": "error",
     // re-export するため各ファイルを単一のモジュールとして評価しない
     "isolatedModules": false,
-    // .tsx ファイルから JSX の形式を保ったまま .jsx ファイルを出力
-    "jsx": "preserve",
+    // .tsx ファイルから React が使える .js ファイルを出力
+    "jsx": "react",
     // 出力するモジュールは ECMAScript の 最新版に準拠
     "module": "esnext",
     // モジュール解決は Node.js 方式を採用
     "moduleResolution": "node",
-    // TypeScript でなく Babel でコンパイル
-    "noEmit": true,
     // Webpack devtool で使用
     "sourceMap": true,
     // 厳格な設定を有効化 strictNullChecks, noImplicitAny など
@@ -40,6 +38,9 @@
   ],
   "exclude": [
     "node_modules",
-    "public"
-  ]
+    "public",
+    "cmd",
+    "docker",
+    "env",
+    ]
 }

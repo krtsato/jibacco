@@ -9,15 +9,16 @@ module.exports = {
     "@storybook/addon-docs/register",
     "@storybook/addon-knobs/register",
     "@storybook/addon-links/register",
-    "@storybook/addon-viewport/register"
+    "@storybook/addon-viewport/register",
+    "@storybook/preset-typescript",
   ],
-  webpackFinal: async config => {
+  webpackFinal: async (config) => {
     // Storybook addon-docs
     config.module.rules.push({
-      test: /\.stories\.(tsx|ts|js)$/,
+      test: /\.stories\.[tj]sx?$/,
       enforce: "pre",
       exclude: /node_modules/,
-      use: ["babel-loader", "@storybook/source-loader", "react-docgen-typescript-loader"]
+      use: ["@storybook/source-loader"],
     })
 
     // Storybook addon-docs : jsx in the markdown file
@@ -27,20 +28,19 @@ module.exports = {
       use: [
         {
           loader: require.resolve("babel-loader"),
-          options: {plugins: ["@babel/plugin-transform-react-jsx"]}
+          options: {plugins: ["@babel/plugin-transform-react-jsx"]},
         },
         {
           loader: require.resolve("@mdx-js/loader"),
-          options: {compilers: [createCompiler({})]}
-        }
-      ]
+          options: {compilers: [createCompiler({})]},
+        },
+      ],
     })
 
-    // Babel & TypeScript
+    // TypeScript
     config.module.rules.push({
-      test: /\.(tsx|ts|js)$/,
-      exclude: /node_modules/,
-      use: ["babel-loader", "source-map-loader"]
+      test: /\.tsx?$/,
+      use: ["ts-loader", "react-docgen-typescript-loader"],
     })
 
     config.resolve.alias = {
@@ -48,11 +48,11 @@ module.exports = {
       "@comp": path.resolve(__dirname, "../src/components"),
       "@cont": path.resolve(__dirname, "../src/containers"),
       "@redx": path.resolve(__dirname, "../src/reducks"),
-      "@serv": path.resolve(__dirname, "../src/services")
+      "@serv": path.resolve(__dirname, "../src/services"),
     }
 
     config.resolve.extensions.push(".tsx", ".ts")
     config.devServer = {host: "0.0.0.0", port: 6006}
     return config
-  }
+  },
 }

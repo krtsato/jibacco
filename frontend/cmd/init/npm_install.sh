@@ -65,6 +65,7 @@ npm_install_save_dev() {
     fork-ts-checker-webpack-plugin \
     jest \
     prettier \
+    react-is \
     react-docgen-typescript-loader \
     react-test-renderer \
     source-map-loader \

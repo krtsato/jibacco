@@ -5,6 +5,6 @@ initStoryshots({
   integrityOptions: {cwd: "src/components"},
   stories2snapsConverter: new Stories2SnapsConverter({
     snapshotExtension: ".snap.js",
-    snapshotsDirName: "snapshot"
-  })
+    snapshotsDirName: "snapshot",
+  }),
 })

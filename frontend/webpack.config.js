@@ -6,30 +6,35 @@ module.exports = {
   entry: "./src/index.tsx",
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "public")
+    path: path.resolve(__dirname, "public"),
   },
 
-  // Babel
   module: {
     rules: [
       {
-        test: /\.(tsx|ts|js)$/,
+        test: /\.tsx?$/,
+        use: ["ts-loader"],
         exclude: /node_modules/,
-        use: ["babel-loader", "source-map-loader"]
-      }
-    ]
+      },
+      {
+        test: /\.js$/,
+        use: ["source-map-loader"],
+        enforce: "pre",
+        exclude: /node_modules/,
+      },
+    ],
   },
 
-  // import sentences
   resolve: {
+    // import sentences
     alias: {
       "@lib": path.resolve(__dirname, "src/lib"),
       "@comp": path.resolve(__dirname, "src/components"),
       "@cont": path.resolve(__dirname, "src/containers"),
       "@redx": path.resolve(__dirname, "src/reducks"),
-      "@serv": path.resolve(__dirname, "src/services")
+      "@serv": path.resolve(__dirname, "src/services"),
     },
-    extensions: [".tsx", ".ts", ".js"]
+    extensions: [".tsx", ".ts", ".js", ".json"],
   },
 
   // development
@@ -39,7 +44,7 @@ module.exports = {
     historyApiFallback: true,
     host: "0.0.0.0",
     port: 8000,
-    watchContentBase: true
+    watchContentBase: true,
   },
-  devtool: "eval-source-map"
+  devtool: "eval-source-map",
 }
