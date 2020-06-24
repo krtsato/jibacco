@@ -52,7 +52,7 @@
 ```zsh
 # setup directories, files, databases and volumes
 % ./backend/main_api/cmd/init/dev.sh
-% ./frontend/main_api/cmd/init/dev.sh
+% ./frontend/cmd/init/dev.sh
 
 # start services
 % compose/dev.sh up -d --build

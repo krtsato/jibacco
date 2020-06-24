@@ -1,16 +1,14 @@
-# Be sure to restart your server when you modify this file.
+# frozen_string_literal: true
 
-# Avoid CORS issues when API is called from the frontend app.
-# Handle Cross-Origin Resource Sharing (CORS) in order to accept cross-origin AJAX requests.
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  # Insert CORS request headers for API responses
+  allow do
+    # Access-Control-Allow-Origin: Origin の内容をそのまま返す
+    origins '*'
 
-# Read more: https://github.com/cyu/rack-cors
-
-# Rails.application.config.middleware.insert_before 0, Rack::Cors do
-#   allow do
-#     origins 'example.com'
-#
-#     resource '*',
-#       headers: :any,
-#       methods: [:get, :post, :put, :patch, :delete, :options, :head]
-#   end
-# end
+    # /main-api/* の URL に対してのみ CORS 対応
+    # Access-Control-Allow-Headers: OPTIONS に対してのみ Access-Control-Request-Headers の内容そのまま返す
+    # Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS
+    resource '/main-api/*', headers: :any, methods: %i[GET POST PUT PATCH DELETE OPTIONS]
+  end
+end

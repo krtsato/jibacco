@@ -33,3 +33,13 @@ services:
       dockerfile: frontend/docker/dev.dockerfile
     command: npm run build:dev
     env_file: ../frontend/env/dev.env
+
+  swagger:
+    build:
+      context: ../
+      dockerfile: swagger/docker/dev.dockerfile
+    container_name: jbc_swagger_cont
+    env_file: ../swagger/env/dev.env
+    image: jbc_swagger_img
+    ports:
+      - 8080:8080
