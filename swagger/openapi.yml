@@ -9,29 +9,57 @@ info:
   # termsOfService: API の利用規約
 
 servers:
-  - url: http://localhost:3000
-    description: local API server
+  - url: http://localhost:3000/main-api/v1
+    description: Development main API server
 
 tags:
-  - name: users
+  - name: user
     description: Access to Users
 
 paths:
   /users:
     get:
       tags:
-        - users
-      summary: Returns an array of users
-      description: Optional extended description in CommonMark or HTML
+        - user
+      summary: Get all users
+      description: Returns an array of User model
       responses:
         '200':
-          description: A JSON array of user names
-          content:
-            application/json:
-              schema: 
-                type: array
-                items: 
-                  type: string
+          $ref: '#/components/responses/success' 
+
 components:
+  responses:
+    success:
+      description: Success
+      content:
+        application/json:
+          schema: 
+            type: array
+            items:
+              $ref: '#/components/schemas/User'
+          examples:
+            users:
+              $ref: '#/components/examples/Users'
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      required:
+        - id
+        - name
+
+  examples:
+    Users:
+      value:
+        - id: 1
+          name: Haruhi Suzumiya
+        - id: 2
+          name: 涼宮ハルヒ
+
 security:
 externalDocs:
