@@ -1,0 +1,32 @@
+openapi: 3.0.3
+info:
+  title: Jibacco APIs
+  description: backend APIs handling frontend requests via nginx
+  version: 0.0.1
+
+externalDocs:
+  description: GitHub Repository
+  url: https://github.com/krtsato/jibacco
+
+servers:
+  - url: http://localhost:3000/main-api/v1
+    description: Development main API server
+
+tags:
+  - name: user
+    description: API for user
+
+paths:
+  /users:
+    $ref: ./paths/users.yml
+
+components:
+  responses:
+    users:
+      $ref: ./components/responses/users.yml
+  schemas:
+    user:
+      $ref: ./components/schemas/user.yml
+  examples:
+    users:
+      $ref: ./components/examples/users.yml

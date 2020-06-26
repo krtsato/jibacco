@@ -43,14 +43,10 @@ services:
       --no-open
       --host 0.0.0.0
       --port 8080
-      /swagger/openapi.yml
+      /swagger/index.yml
     container_name: jbc_swagger_cont
-    env_file: ../swagger/env/dev.env
     image: jbc_swagger_img
     ports:
       - 8080:8080
     volumes:
-      - swagger_bundle_file_vol:/swagger/openapi.yml
-
-volumes:
-  swagger_bundle_file_vol:
+      - ../swagger:/swagger

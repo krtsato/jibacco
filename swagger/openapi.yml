@@ -1,65 +1,90 @@
-openapi: 3.0.3
+openapi: "3.0.3"
 info:
-  title: Jibacco Main API
-  description: The first backend API handling frontend requests via nginx
-  version: 0.0.1
-  # ========== others ==========
-  # contact: API 管理者の連絡先
-  # license: ライセンスの情報
-  # termsOfService: API の利用規約
-
+  title: "Jibacco APIs"
+  description: "backend APIs handling frontend requests via nginx"
+  version: "0.0.1"
+externalDocs:
+  description: "GitHub Repository"
+  url: "https://github.com/krtsato/jibacco"
 servers:
-  - url: http://localhost:3000/main-api/v1
-    description: Development main API server
-
+  - url: "http://localhost:3000/main-api/v1"
+    description: "Development main API server"
 tags:
-  - name: user
-    description: Access to Users
-
+  - name: "user"
+    description: "API for user"
 paths:
   /users:
     get:
       tags:
-        - user
-      summary: Get all users
-      description: Returns an array of User model
+        - "user"
+      summary: "Get All users"
       responses:
-        '200':
-          $ref: '#/components/responses/success' 
-
+        200:
+          description: "Returns an array of User model"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  type: "object"
+                  properties:
+                    id:
+                      type: "integer"
+                      format: "int64"
+                    name:
+                      type: "string"
+                  required:
+                    - "id"
+                    - "name"
+              examples:
+                users:
+                  value:
+                    - id: 1
+                      name: "涼宮ハルヒ"
+                    - id: 2
+                      name: "Haruhi Suzumiya"
 components:
   responses:
-    success:
-      description: Success
+    users:
+      description: "Returns an array of User model"
       content:
         application/json:
-          schema: 
-            type: array
+          schema:
+            type: "array"
             items:
-              $ref: '#/components/schemas/User'
+              type: "object"
+              properties:
+                id:
+                  type: "integer"
+                  format: "int64"
+                name:
+                  type: "string"
+              required:
+                - "id"
+                - "name"
           examples:
             users:
-              $ref: '#/components/examples/Users'
+              value:
+                - id: 1
+                  name: "涼宮ハルヒ"
+                - id: 2
+                  name: "Haruhi Suzumiya"
   schemas:
-    User:
-      type: object
+    user:
+      type: "object"
       properties:
         id:
-          type: integer
-          format: int64
+          type: "integer"
+          format: "int64"
         name:
-          type: string
+          type: "string"
       required:
-        - id
-        - name
-
+        - "id"
+        - "name"
   examples:
-    Users:
+    users:
       value:
         - id: 1
-          name: Haruhi Suzumiya
+          name: "涼宮ハルヒ"
         - id: 2
-          name: 涼宮ハルヒ
-
-security:
-externalDocs:
+          name: "Haruhi Suzumiya"
