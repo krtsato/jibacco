@@ -11,6 +11,6 @@
 # setup directories, files and volume
 % ./frontend/cmd/init/dev.sh
 
-# start puma server
+# start webpack-dev-server
 % compose/dev.sh up -d frontend
 ```
