@@ -26,10 +26,6 @@ jobs:
         run: |
           npm run lint
           npm run fmt
-      - name: Git Auto Commit
-        uses: stefanzweifel/git-auto-commit-action@v4.4.0
-        with:
-          commit_message: "ci: prettier and eslint format"
 
   fotmat-backend-main-api:
     runs-on: ubuntu-latest
@@ -46,7 +42,13 @@ jobs:
       - name: Run Rubocop
         working-directory: backend/main_api
         run: bundle exec rubocop -a
+  
+  commit-format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v4.4.0
         with:
-          commit_message: "ci: rubocop format"
+          commit_message: "ci: format both of frontend and backend code"
