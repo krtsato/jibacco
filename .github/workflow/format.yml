@@ -1,0 +1,23 @@
+name: Frontend CI
+
+on:
+  pull_request:
+    paths:
+      - frontend/src
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prettier Action
+        uses: creyD/prettier_action@v3.0
+        with:
+          commit_message: "ci: prettier formatted code."
+          file_pattern:
+            - .tsx
+            - .ts
+            - .js
+          prettier_options: --config frontend/.prettierrc.yml --write 'frontend/src/**/*'"
