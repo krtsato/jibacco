@@ -1,7 +1,10 @@
 name: Format CI
 
 on:
-  push:
+  pull_request:
+    types:
+      - opened
+      - synchronize
     paths:
       - frontend/src/**
       - backend/main_api/app/**
@@ -14,41 +17,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set Node.js
-        uses: actions/setup-node@v1
+      - name: Run eslint with reviewdog
+        uses: reviewdog/action-eslint@v1.0.0
         with:
-          node-version: 14.4.0
-      - name: Install dependences
-        working-directory: frontend
-        run: npm ci
-      - name: Run Eslint and Prettier
-        working-directory: frontend
-        run: |
-          npm run lint
-          npm run fmt
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-check
+          eslint_flags: --ext .tsx,.ts,.js frontend/src/**/*
 
   fotmat-backend-main-api:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Run rubocop with reviewdog
+        uses: reviewdog/action-rubocop@v1
         with:
-          ruby-version: 2.7.1
-      - name: Install dependences
-        working-directory: backend/main_api
-        run: bundle install -j4
-      - name: Run Rubocop
-        working-directory: backend/main_api
-        run: bundle exec rubocop -a
-  
-  commit-format:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Git Auto Commit
-        uses: stefanzweifel/git-auto-commit-action@v4.4.0
-        with:
-          commit_message: "ci: format both of frontend and backend code"
+          github_token: ${{ secrets.github_token }}
+          rubocop_extensions: rubocop-performance rubocop-rails rubocop-rspec
+          rubocop_flags: --parallel
+          reporter: github-pr-check
+          workdir: backend/main_api/app
