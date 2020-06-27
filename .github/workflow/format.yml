@@ -1,23 +1,44 @@
-name: Frontend CI
+name: Format CI
 
 on:
-  pull_request:
+  push:
     paths:
-      - frontend/src
+      - frontend
+      - backend/main_api
     branches:
       - master
 
 jobs:
-  build:
+  format-frontend:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Prettier Action
-        uses: creyD/prettier_action@v3.0
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set Node.js
+        uses: actions/setup-node@v1
         with:
-          commit_message: "ci: prettier formatted code."
-          file_pattern:
-            - .tsx
-            - .ts
-            - .js
-          prettier_options: --config frontend/.prettierrc.yml --write 'frontend/src/**/*'"
+          node-version: 14.4.0
+      - name: Install dependences
+        working-directory: frontend
+        run: npm ci
+      - name: Run Eslint and Prettier
+        working-directory: frontend
+        run: |
+          npm run lint
+          npm run fmt
+
+  fotmat-backend-main-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.1
+      - name: Install dependences
+        working-directory: backend/main_api
+        run: bundle install -j4
+      - name: Run Rubocop
+        working-directory: backend/main_api
+        run: bundle exec rubocop -a
