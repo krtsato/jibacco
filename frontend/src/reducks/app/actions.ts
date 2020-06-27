@@ -4,7 +4,7 @@ import {ActionTypes, AppActions} from "./types"
 // app
 const catchErrorAct = (errorMsg: string): AppActions["CatchError"] => ({
   type: ActionTypes.CatchError,
-  payload: {errorMsg}
+  payload: {errorMsg},
 })
 
 // ========== Referenced from the operations ==========

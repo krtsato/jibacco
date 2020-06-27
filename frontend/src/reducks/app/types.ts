@@ -2,7 +2,7 @@
 
 // ========== Action Types ==========
 export const ActionTypes = {
-  CatchError: "APP/CATCH_ERROR"
+  CatchError: "APP/CATCH_ERROR",
 } as const
 
 // ========== App Types ==========

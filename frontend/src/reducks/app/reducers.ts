@@ -9,7 +9,7 @@ const flashRed: Reducer<AppState, AppActions["CatchError"]> = (state = initAppSt
     case ActionTypes.CatchError:
       return {
         ...state,
-        errorMsg: action.payload.errorMsg
+        errorMsg: action.payload.errorMsg,
       }
     default: {
       // If you add a action, release the following union-check comment
@@ -21,5 +21,5 @@ const flashRed: Reducer<AppState, AppActions["CatchError"]> = (state = initAppSt
 
 // ========== Referenced from the store ==========
 export const appReducers = combineReducers({
-  flash: flashRed
+  flash: flashRed,
 })

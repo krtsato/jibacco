@@ -3,8 +3,8 @@ name: Format CI
 on:
   push:
     paths:
-      - frontend
-      - backend/main_api
+      - frontend/src/**
+      - backend/main_api/app/**
     branches:
       - master
 
