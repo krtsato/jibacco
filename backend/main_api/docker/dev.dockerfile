@@ -1,6 +1,6 @@
 FROM ruby:2.7.1-alpine3.11
 
-COPY backend/main_api/docker/.gemrc ~/
+COPY backend/main_api/docker/.gemrc ~
 
 RUN set -ox pipefail \
   && apk update \

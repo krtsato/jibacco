@@ -1,0 +1,61 @@
+name: CI for Backend Main API
+
+on:
+  push:
+    paths:
+      - backend/main_api/app/**
+      - backend/main_api/spec/**
+    branches:
+      - master
+
+defaults:
+  run:
+    working-directory: backend/main_api
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.1
+      - name: Cache rubocop
+        uses: actions/cache@v2.0.0
+        with:
+          path: ~/.cache/rubocop_cache
+          key: backend-main-api-rubocop-${{ hashFiles('.rubocop.yml') }}
+          restore-keys: backend-main-api-rubocop-
+      - name: Install Rubocop
+        run: |
+          bundle config path vendor/bundle
+          gem install rubocop -N
+      - name: Run Rubocop
+        run: bundle exec rubocop -P -c .rubocop.yml
+
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend/main_api
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.1
+      - name: Cache gems
+        uses: actions/cache@v2.0.0
+        with:
+          path: vendor/bundle
+          key: backend-main-api-bundle-${{ hashFiles('Gemfile.lock') }}
+          restore-keys: backend-main-api-bundle-
+      - name: Install dependencies
+        run: |
+          bundle config path vendor/bundle
+          bundle install -j4
+      - name: Run RSpec
+        run: bundle exec rspec
