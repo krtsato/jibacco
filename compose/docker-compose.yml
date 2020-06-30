@@ -61,5 +61,3 @@ volumes:
   main_api_bundle_vol:
   frontend_proxy_vol:
   # node_modules は IDE で使うためトップレベルの volumes に含めない
-  # VScode Remote Container を使えば volumes に入れる必要はない？
-  # -> 検証
