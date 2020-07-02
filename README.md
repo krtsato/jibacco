@@ -56,5 +56,5 @@
 % ./swagger/cmd/init/dev.sh
 
 # start services
-% compose/dev.sh up -d --build
+% compose/dev.sh up -d
 ```
