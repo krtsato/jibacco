@@ -2,14 +2,16 @@
 
 年配者が心理的な障壁を抱えることなく  
 若者にコーチングを依頼できるサービス  
-鋭意制作中
+
+サーバサイドを Go で書くため Go 製の Web API に入門中  
+そのため開発を一時中断しています
 
 <br>
 
 ## 環境
 
 - Docker
-- Ruby on Rails API
+- Ruby on Rails API or Go
 - MySQL
 - Redis
 - Nginx
